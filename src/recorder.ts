@@ -11,7 +11,7 @@ import { generateId } from './utils/ids';
 import { redactHeaders, redactBodyFields } from './utils/redact';
 
 const DEFAULT_STORAGE_PATH = '.service-spy/recordings';
-const DEFAULT_BUFFER_SIZE = 1000;
+const DEFAULT_BUFFER_SIZE = 500;
 
 /**
  * The Recorder captures HTTP exchanges and persists them as sessions
