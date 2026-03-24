@@ -7,7 +7,7 @@ import type {
   CapturedError,
   CapturedExchange,
   RequestFilter,
-  service-spyEventMap,
+  ServiceSpyEventMap,
 } from './types';
 import { generateId, generateCorrelationId, generateSpanId } from './utils/ids';
 import { getContext, withContext } from './utils/context';
@@ -18,7 +18,7 @@ type OriginalRequest = typeof http.request;
  * The Interceptor hooks into Node's http/https modules to capture
  * all outbound HTTP requests and their responses transparently.
  */
-export class Interceptor extends EventEmitter<service-spyEventMap > {
+export class Interceptor extends EventEmitter<ServiceSpyEventMap> {
   private originalHttpRequest: OriginalRequest | null = null;
   private originalHttpsRequest: OriginalRequest | null = null;
 
@@ -283,7 +283,7 @@ function matchesFilter(
 
   if (typeof filter === 'function') {
     try {
-      return Boolean(filter(captured) as unknown);
+      return Boolean((filter as (req: CapturedRequest) => boolean)(captured));
     } catch {
       return false;
     }

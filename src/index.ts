@@ -118,7 +118,7 @@ export class ServiceSpy {
     return this.recorder.stopSession();
   }
 
-  dd
+
   async *replay(
     sessionId: string
   ): AsyncGenerator<CapturedExchange, void, unknown> {
