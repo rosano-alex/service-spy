@@ -1,10 +1,7 @@
-<p style="text-align: Left;"><img src="img/logo.png" width="520"></p>
+# Service-Spy
 
-**service-spy** is a minimal, composable debugging toolkit for server-to-server HTTP communication.
+**service-spy** is a minimal, composable debugging toolkit for server-to-server HTTP communication. It gives you full visibility into your network layer with interception, recording, replay, inspection, and tracing, all in a single lightweight runtime.
 
-It gives you full visibility into your network layer with interception, recording, replay, inspection, and tracing, all in a single lightweight runtime.
-
----
 
 ##  Features
 
@@ -15,15 +12,13 @@ It gives you full visibility into your network layer with interception, recordin
 -  **Context propagation utilities**
 - Modular architecture, use only what you need
 
----
-
+<b>
 ##  Installation
 
 ```bash
 npm install @codigos/service-spy
 ```
 
----
 
 ##  Quick Start
 
@@ -40,7 +35,7 @@ const serviceSpy = new ServiceSpy({
 await serviceSpy.start();
 ```
 
----
+
 
 ## Core Concepts
 
@@ -73,7 +68,7 @@ Adds observability and correlation across services.
 - Latency tracking
 - Structured logs
 
----
+
 
 ##  Recording & Replay
 
@@ -105,7 +100,7 @@ for await (const exchange of serviceSpy.replay(session.id)) {
 const sessions = await serviceSpy.listSessions();
 ```
 
----
+
 
 ##  Inspector
 
@@ -121,7 +116,7 @@ Then open:
 
 http://localhost:8787
 
----
+
 
 ##  Tracing
 
@@ -134,7 +129,7 @@ const serviceSpy = new ServiceSpy({
 });
 ```
 
----
+
 
 ## Context Utilities
 
@@ -197,22 +192,13 @@ src/
 
 ---
 
-##  Use Cases
 
-- Debugging microservices communication
-- Reproducing production bugs locally
-- Contract testing with real traffic
-- Observability without heavy infra
-- Building internal devtools
-
----
 
 
 ##  Contributing
 
-Contributions are welcome and should align with the library’s core principles of simplicity, performance, and deterministic behavior. Please open an issue before major changes, follow the existing code style, include tests, and ensure all commits are clear and well-scoped.
+Contributions are welcome and should align with the library’s core principles. Please open an issue before major changes, follow the existing code style, include tests, and ensure all commits are good quality.
 
----
 
 ##  License
 
