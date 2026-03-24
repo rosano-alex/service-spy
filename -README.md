@@ -1,6 +1,6 @@
 <p style="text-align: Left;"><img src="img/logo.png" width="560"></p>
 
-**binocs** is a minimal, composable debugging toolkit for server-to-server HTTP communication.
+**service-spy** is a minimal, composable debugging toolkit for server-to-server HTTP communication.
 
 It gives you **full visibility into your network layer** with interception, recording, replay, inspection, and tracing, all in a single lightweight runtime.
 
@@ -20,7 +20,7 @@ It gives you **full visibility into your network layer** with interception, reco
 ##  Installation
 
 ```bash
-npm install binocs
+npm install service-spy
 ```
 
 ---
@@ -28,16 +28,16 @@ npm install binocs
 ##  Quick Start
 
 ```ts
-import { Binocs } from 'binocs';
+import { service-spy } from 'service-spy';
 
-const binocs = new Binocs({
+const service-spy = new service-spy({
   intercept: true,
-  recorder: { storagePath: '.binocs/recordings' },
+  recorder: { storagePath: '.service-spy/recordings' },
   inspector: { port: 8787, stdout: true },
   tracer: { serviceName: 'order-service', format: 'pretty' },
 });
 
-await binocs.start();
+await service-spy.start();
 ```
 
 ---
@@ -80,7 +80,7 @@ Adds observability and correlation across services.
 ### Start Recording
 
 ```ts
-const session = binocs.startRecording('checkout-flow', {
+const session = service-spy.startRecording('checkout-flow', {
   env: 'staging',
 });
 ```
@@ -88,13 +88,13 @@ const session = binocs.startRecording('checkout-flow', {
 ### Stop Recording
 
 ```ts
-await binocs.stopRecording();
+await service-spy.stopRecording();
 ```
 
 ### Replay
 
 ```ts
-for await (const exchange of binocs.replay(session.id)) {
+for await (const exchange of service-spy.replay(session.id)) {
   console.log(exchange.request.url);
 }
 ```
@@ -102,7 +102,7 @@ for await (const exchange of binocs.replay(session.id)) {
 ### List Sessions
 
 ```ts
-const sessions = await binocs.listSessions();
+const sessions = await service-spy.listSessions();
 ```
 
 ---
@@ -112,7 +112,7 @@ const sessions = await binocs.listSessions();
 Enable the inspector:
 
 ```ts
-const binocs = new Binocs({
+const service-spy = new service-spy({
   inspector: { port: 8787 }
 });
 ```
@@ -126,7 +126,7 @@ http://localhost:8787
 ##  Tracing
 
 ```ts
-const binocs = new Binocs({
+const service-spy = new service-spy({
   tracer: {
     serviceName: 'payments',
     correlationHeader: 'x-correlation-id',
@@ -144,7 +144,7 @@ import {
   getContext,
   getCorrelationId,
   addContextTags
-} from 'binocs';
+} from 'service-spy';
 ```
 
 Example:
@@ -160,7 +160,7 @@ await withContext({ userId: '123' }, async () => {
 ##  Configuration
 
 ```ts
-type BinocsConfig = {
+type service-spyConfig = {
   intercept?: boolean;
 
   filter?: (url: string) => boolean;
@@ -186,10 +186,10 @@ type BinocsConfig = {
 ## 🧱 Advanced Usage
 
 ```ts
-const interceptor = binocs.getInterceptor();
-const recorder = binocs.getRecorder();
-const inspector = binocs.getInspector();
-const tracer = binocs.getTracer();
+const interceptor = service-spy.getInterceptor();
+const recorder = service-spy.getRecorder();
+const inspector = service-spy.getInspector();
+const tracer = service-spy.getTracer();
 ```
 
 ---

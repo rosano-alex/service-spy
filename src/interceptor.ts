@@ -7,7 +7,7 @@ import type {
   CapturedError,
   CapturedExchange,
   RequestFilter,
-  BinocsEventMap,
+  service-spyEventMap,
 } from './types';
 import { generateId, generateCorrelationId, generateSpanId } from './utils/ids';
 import { getContext, withContext } from './utils/context';
@@ -18,7 +18,7 @@ type OriginalRequest = typeof http.request;
  * The Interceptor hooks into Node's http/https modules to capture
  * all outbound HTTP requests and their responses transparently.
  */
-export class Interceptor extends EventEmitter<BinocsEventMap> {
+export class Interceptor extends EventEmitter<service-spyEventMap > {
   private originalHttpRequest: OriginalRequest | null = null;
   private originalHttpsRequest: OriginalRequest | null = null;
 

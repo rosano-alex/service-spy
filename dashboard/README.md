@@ -64,7 +64,7 @@ dashboard/
     ├── setup.js
     ├── mockData.test.js
     ├── components.test.jsx
-    └── BinocsDashboard.test.jsx
+    └── service-spyDashboard.test.jsx
 ```
 
 ## Tech stack
